@@ -35,9 +35,10 @@ def gaze(instructions: TextToImageInstructions):
 @app.post("/receive_echo")
 def receive_echo(echo: Echo):
     headers = {"gallery_key": GALLERY_KEY}
-    response = requests.post(f"http://{GALLERY_HOST}:{GALLERY_PORT}/download",
+    response = requests.post(f"https://{GALLERY_HOST}:{GALLERY_PORT}/download",
                              json={"file_name": f"{echo.reply.image_identifier}.png"},
-                             headers=headers)
+                             headers=headers,
+                             verify=False)
     if response.status_code != 200:
         raise RuntimeError(f"bad status code from gallery download: {response.status_code}")
     with open(f"{STORAGE_DIRECTORY}/{echo.reply.image_identifier}.png", "wb") as output_file:
