@@ -24,8 +24,8 @@ os.makedirs(STORAGE_DIRECTORY, exist_ok=True)
 def gaze(instructions: TextToImageInstructions):
     errand = Errand(
         instructions=instructions,
-        origin="tarn:33333",
-        destination="tarn:33333",
+        origin="tarn",
+        destination="tarn:33333/receive_echo",
         errand_identifier=str(uuid.uuid4()),
         timestamp=time.time()
     )
