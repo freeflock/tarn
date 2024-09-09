@@ -7,12 +7,10 @@ services:
       - 33322:33333
     networks:
       - ratatosk_ratatosk
-    environment:
-      STORAGE_DIRECTORY: /atelier/storage
     volumes:
       - /tmp/tarn:/atelier/storage
     env_file:
-      - tarn.env
+      - env/docker.env
 
 networks:
   ratatosk_ratatosk:
